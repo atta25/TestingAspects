@@ -26,18 +26,13 @@ public class EmployeeServiceAspect {
     }
 
     @Around("execution(* com.example.app.service.*.*(..))")
-    public Object calculateTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-
-        long t1=System.currentTimeMillis();
-
-        Object result = proceedingJoinPoint.proceed();
-
-        long t2=System.currentTimeMillis();
+    public void calculateTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        long t1 = System.currentTimeMillis();
+        proceedingJoinPoint.proceed();
+        long t2 = System.currentTimeMillis();
 
         if (t2-t1 > 2000) {
             System.out.println("Metodo lento:" + proceedingJoinPoint.getTarget().getClass() + "." + proceedingJoinPoint.getSignature().getName() + ":" + (t2-t1));
         }
-
-        return result;
     }
 }
