@@ -13,7 +13,7 @@ public class EmployeeService {
         return emp;
     }
 
-    public void deleteEmployee(String empId) {
-
+    public void deleteEmployee(String empId) throws InterruptedException {
+        Thread.sleep(3000);
     }
 }

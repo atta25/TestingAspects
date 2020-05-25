@@ -21,7 +21,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/remove/employee", method = RequestMethod.GET)
-    public String removeEmployee( @RequestParam("empId") String empId) {
+    public String removeEmployee( @RequestParam("empId") String empId) throws InterruptedException {
         employeeService.deleteEmployee(empId);
         return "Employee removed";
     }
